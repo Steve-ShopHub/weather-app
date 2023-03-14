@@ -16,8 +16,8 @@ async function geoSuccess(position) {
   userLat = position.coords.latitude.toString();
   userLong = position.coords.longitude.toString();
 
-  console.log(position.coords.latitude.toString());
-  console.log(position.coords.longitude.toString());
+  // console.log(position.coords.latitude.toString());
+  // console.log(position.coords.longitude.toString());
   return [userLat, userLong];
 }
 
