@@ -1,18 +1,50 @@
 ////////// GeoLocation Weather ////////
 
-/*
-
-let userLat;
-let userLong;
-
+// let userLat;
+// let userLong;
+let userApiKey = "99047a288c2f142af21062296db82acc";
 
 /// Get user location
 
+/*
+
 async function geoSuccess(position) {
-  userLat = position.coords.latitude.toString();
-  userLong = position.coords.longitude.toString();
-  return [userLat, userLong];
+const lat = position.coords.latitude.toString();
+ const long = position.coords.longitude.toString();
+  return [lat, long];
 }
+
+*/
+
+async function fetchGeoWeather(position) {
+  try {
+    const apiKey = userApiKey;
+    const lat = position.coords.latitude.toString();
+    const long = position.coords.longitude.toString();
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`,
+      { mode: "cors" }
+    );
+    const weatherData = await response.json();
+
+    const weather = {
+      location: await weatherData.name,
+      main: await weatherData.weather[0].main,
+      desc: await weatherData.weather[0].description,
+      temp: `${await weatherData.main.temp}°C`,
+    };
+    console.log(weatherData);
+    console.log(weather.location);
+    console.log(weather.main);
+    console.log(weather.desc);
+    console.log(weather.temp);
+    return weather;
+  } catch (error) {
+    console.log("Error", error);
+  }
+  return null;
+}
+
 const geoOptions = {
   enableHighAccuracy: true,
 };
@@ -21,33 +53,16 @@ function geoError(err) {
 }
 
 async function getGeolocation() {
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+  navigator.geolocation.getCurrentPosition(
+    fetchGeoWeather,
+    geoError,
+    geoOptions
+  );
 }
 
 getGeolocation();
 
-async function fetchGeoWeather(lat, long, apiKey, units) {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}}&lon=${long}&appid=${apiKey}&units=${units}`,
-        { mode: "cors" }
-      );
-      const weatherData = await response.json();
-  
-      const weather = {
-        main: await weatherData.weather[0].main,
-        desc: await weatherData.weather[0].description,
-        temp: `${await weatherData.main.temp}${userTempSymbol()}`,
-      };
-      return weather;
-    } catch (error) {
-      console.log("Error", error);
-    }
-    return null;
-  }
-
-
-*/
+// fetchGeoWeather(userLat, userLong, userApiKey, "metric");
 
 ////////// Submitted Location Weather ////////
 
@@ -60,7 +75,6 @@ async function fetchGeoWeather(lat, long, apiKey, units) {
 //   //   return tempSymbol;
 // }
 
-let userApiKey = "99047a288c2f142af21062296db82acc";
 let userCity = "Swindon";
 let userUnits = "metric";
 
