@@ -1,20 +1,6 @@
 ////////// GeoLocation Weather ////////
 
-// let userLat;
-// let userLong;
 let userApiKey = "99047a288c2f142af21062296db82acc";
-
-/// Get user location
-
-/*
-
-async function geoSuccess(position) {
-const lat = position.coords.latitude.toString();
- const long = position.coords.longitude.toString();
-  return [lat, long];
-}
-
-*/
 
 async function fetchGeoWeather(position) {
   try {
@@ -62,18 +48,7 @@ async function getGeolocation() {
 
 getGeolocation();
 
-// fetchGeoWeather(userLat, userLong, userApiKey, "metric");
-
 ////////// Submitted Location Weather ////////
-
-// function userTempSymbol() {
-//   return "metric";
-//   //   let tempSymbol;
-//   //   if (userUnits === "imperial") {
-//   //     tempSymbol = "°F";
-//   //   } else tempSymbol = "°C";
-//   //   return tempSymbol;
-// }
 
 let userCity = "Swindon";
 let userUnits = "metric";
