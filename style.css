@@ -1,7 +1,21 @@
 html {
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
-}
+  background-image: url('./imgs/cloud-background-1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 
+}   
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 4vh;
+}
 
 .lds-ring {
     display: inline-block;
@@ -41,7 +55,7 @@ html {
 
 
 .display {
-    border: solid 2px rgb(168, 0, 0);
+    /* border: solid 2px rgb(168, 0, 0); */
     display: flex;
 }
 
@@ -49,7 +63,7 @@ html {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 
 .weather .top {
@@ -57,11 +71,11 @@ html {
 }
 
 .location {
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 
 .weather * {
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 
 .display * {
